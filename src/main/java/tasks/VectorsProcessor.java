@@ -7,7 +7,11 @@ import math.IndicatorsSet;
 
 import java.util.List;
 
-public class VectorsProcessor {
+public class VectorsProcessor extends TaskProcessor {
+
+    public VectorsProcessor(StringBuilder sb) {
+        super(sb,"VectorsProcessor");
+    }
 
     public JSON runTask(String tickerId, String fileName) {
 

@@ -36,7 +36,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String task=args[0];
+        String task="1"; //args[0];
         StringBuilder sb = new StringBuilder();
         String outFile = OUTS+"task_"+Utilities.getTimeTag()+".txt";
 

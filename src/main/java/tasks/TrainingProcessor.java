@@ -1,21 +1,33 @@
 package tasks;
 
 import datamodels.StockDataSet;
+import deeplearning.DeepLayer;
 import environment.Utilities;
-import neural.DeepLayer;
-
-import java.io.BufferedReader;
-import java.io.DataInput;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class TrainingProcessor extends StockDataSet {
+public class TrainingProcessor extends TaskProcessor {
 
+    public StockDataSet stockData;
     public double[] avg;
     public double[] stdev;
+
+
+    public TrainingProcessor(StringBuilder sb) {
+        super(sb,"TrainingProcessor");
+        stockData = new StockDataSet();
+    }
+
+    double[][] inputVector;
+    int samples;
+    int inputSize;
+
+    public void loadDataSet(String dataFile, String[] filters, String[] _inputKPIs, int history) {
+        stockData.loadDataSet(dataFile, filters, _inputKPIs, history);
+        inputVector = stockData.inputVector;
+        samples = stockData.samples;
+        inputSize = stockData.inputSize;
+    }
 
 
     public void calculateKPIStats() {
@@ -48,7 +60,7 @@ public class TrainingProcessor extends StockDataSet {
         StringBuilder sb = new StringBuilder();
         for( int i=0; i<samples; i++ ){
             sb.append( String.format("%10s, %10.2f, %10.2f, %3.1f, %3.1f",
-                    dates[i], price[i], zigZag[i], buySignal[i], sellSignal[i] ) );
+                    stockData.dates[i], stockData.price[i], stockData.zigZag[i], stockData.buySignal[i], stockData.sellSignal[i] ) );
             for( double x : inputVector[i] ) {
                 sb.append( String.format(", %.5f", x ) );
             }
@@ -73,7 +85,7 @@ public class TrainingProcessor extends StockDataSet {
             double[] signal1 = nn1.feedForward(inputVector[i]);
             double[] signal2 = nn2.feedForward(inputVector[i]);
             sb.append( String.format("%10s, %10.2f, %10.2f, %3.1f, %3.1f, %3.1f, %3.1f",
-                    dates[i], price[i], zigZag[i], buySignal[i], sellSignal[i], signal1[0], signal2[0] ) );
+                    stockData.dates[i], stockData.price[i], stockData.zigZag[i], buySignal[i], sellSignal[i], signal1[0], signal2[0] ) );
             sb.append("\n");
 
             boolean exp1 = signal1[0]>0.8;
@@ -115,7 +127,7 @@ public class TrainingProcessor extends StockDataSet {
 
     public static void train(DeepLayer network, double[] y, double[][] x, double learningRate, int iterationsNum, String outFile){
         int tsSize = y.length;
-        network.LEARNING_RATE = learningRate;
+        network.setLearningRate(learningRate);
         int milestone1 = iterationsNum/4;
         int milestone2 = iterationsNum/2;
         int milestone3 = (3*iterationsNum)/4;
