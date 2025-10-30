@@ -1,7 +1,7 @@
 package datamodels;
 
 import environment.Utilities;
-import neural.DeepLayer;
+
 
 import java.io.BufferedReader;
 import java.io.DataInput;

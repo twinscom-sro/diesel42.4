@@ -20,6 +20,10 @@ public class JSON {
     }
 
     public static JSON DATA(Document doc) {
-        return new JSON("OK", doc);
+        if( doc==null ){
+            return new JSON("OK", new Document() );
+        }else{
+            return new JSON("OK", doc);
+        }
     }
 }

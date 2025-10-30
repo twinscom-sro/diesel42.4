@@ -1,14 +1,41 @@
 package deeplearning;
 
+import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
+import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
+import org.deeplearning4j.nn.conf.layers.DenseLayer;
+import org.deeplearning4j.nn.conf.layers.OutputLayer;
+import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
+import org.deeplearning4j.nn.weights.WeightInit;
+import org.deeplearning4j.optimize.listeners.ScoreIterationListener;
+import org.nd4j.evaluation.classification.Evaluation;
+import org.nd4j.linalg.activations.Activation;
+import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.dataset.DataSet;
+import org.nd4j.linalg.learning.config.Nadam;
+import org.nd4j.linalg.lossfunctions.LossFunctions;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.stream.IntStream;
+
 public class NeuralNetwork {
 
     String label;
+    int vectorSize;
     int neurons;
     MultiLayerConfiguration conf;
     MultiLayerNetwork network;
 
+    public NeuralNetwork(String fileName) {
+        try {
+            network = MultiLayerNetwork.load(new File(fileName), true);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-    public NeuralNetwork( String _label, int _config, int _neurons){
+    public NeuralNetwork( String _label, int _config, int _vectorSize, int _neurons){
+        vectorSize = _vectorSize;
         neurons = _neurons;
         label = _label;
         conf = new NeuralNetConfiguration.Builder()
@@ -25,8 +52,8 @@ public class NeuralNetwork {
                 .updater(new Nadam())
                 .list()
                 .layer(new DenseLayer.Builder()
-                        .nIn(VECTOR_SIZE)
-                        .nOut(NEURONS)
+                        .nIn(vectorSize)
+                        .nOut(neurons)
                         //.activation(Activation.SIGMOID)
                         // random initialize weights with values between 0 and 1
                         //.weightInit(new UniformDistribution(-1, 1))
@@ -39,10 +66,38 @@ public class NeuralNetwork {
                 .build();
 
         network = new MultiLayerNetwork(conf);
+        network.init();
+        // Print the number of parameters in the network (and for each layer)
+        System.out.println(network.summary());
     }
 
-    void initialize(){
-        network.init();
+
+    public double[] feedForward(INDArray features) {
+        INDArray y = network.output(features);
+        double[] y1 = y.data().asDouble();
+        return y1;
+    }
+
+    public void train(DataSet ds, int iterations) {
+        network.setListeners(new ScoreIterationListener(500));
+
+        // here the actual learning takes place
+        IntStream.range(0, iterations).mapToObj(i -> ds).forEach(network::fit);
+
+        //evaluate model training performance
+        INDArray output = network.output(ds.getFeatures());
+        Evaluation eval = new Evaluation();
+        eval.eval(ds.getLabels(), output);
+        System.out.println(eval.stats());
+
+    }
+
+    public void saveTopology(String fileName){
+        try {
+            network.save(new File(fileName));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

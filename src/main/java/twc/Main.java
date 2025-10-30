@@ -1,6 +1,8 @@
 package twc;
 
 import environment.Utilities;
+import tasks.NetworkTrainingProcessor;
+import tasks.TrainingSetProcessor;
 import tasks.VectorsProcessor;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -19,12 +21,12 @@ public class Main {
     """;
 
     //debugging:
-    static final String ITERATIONS = "10000";
-    static final String NEURONS = "4096"; //"1024";
-    static final String KPIS = "c:/_db/kpis/";
-    static final String TSET = "c:/_db/ts_360/";
-    static final String NETS = "c:/_db/nets_360/";
-    static final String OUTS = "c:/_arcturus/2025-10-26/";
+    static final int ITERATIONS = 1000;
+    static final int NEURONS = 4096; //"1024";
+    static final String KPIS = "c:/_db2/kpis/";
+    static final String TS = "c:/_db2/ts/";
+    static final String NETS = "c:/_db2/nets/";
+    static final String OUTS = "c:/_arcturus/2025-10-28/";
     static final String VECTOR = "cmf,obv,willR,atrPct,kcMPct,kcUPct,macdv,macdvSignal";
     static final String HISTORY = "3";
 
@@ -36,19 +38,35 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String task="1"; //args[0];
+        String task="3"; //args[0];
         StringBuilder sb = new StringBuilder();
         String outFile = OUTS+"task_"+Utilities.getTimeTag()+".txt";
 
         if( task.contentEquals("1") ){
             for( String tickerId : dji30 ){
                 VectorsProcessor vp = new VectorsProcessor(sb);
-                vp.runTask(tickerId,KPIS,TSET);
+                String kpiFile = KPIS+tickerId+"_kpi.txt";
+                vp.runTask(tickerId,kpiFile);
             }
 
         }else if( task.contentEquals("2") ) {
-            TrainingProcessor tp = new TrainingProcessor(sb);
-            tp.runTask();
+            for( String tickerId : dji30 ){
+                TrainingSetProcessor tsp = new TrainingSetProcessor(sb);
+                String kpiFile = KPIS+tickerId+"_kpi.txt";
+                String tsFile = TS+tickerId+"_209.txt";
+                tsp.runTask(tickerId,kpiFile,tsFile);
+            }
+           // TrainingProcessor tp = new TrainingProcessor(sb);
+           // tp.runTask();
+
+        }else if( task.contentEquals("3") ) {
+            for( String tickerId : dji30 ){
+                String tsFile = TS+tickerId+"_209.txt";
+                String netFile = NETS+tickerId+"_209.txt";
+
+                NetworkTrainingProcessor ntp = new NetworkTrainingProcessor(sb);
+                ntp.runTask(NEURONS, ITERATIONS, tsFile, netFile);
+            }
 
         }else{
             System.out.println( MENU );

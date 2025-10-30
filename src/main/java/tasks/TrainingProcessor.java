@@ -149,68 +149,6 @@ public class TrainingProcessor extends TaskProcessor {
             return;
         }
 
-        boolean alternate = true;
-        for (int epoch = 0; epoch < iterationsNum; epoch++) {
-            /*if( epoch==milestone1 ) network.setLearningRate(learningRate*2);
-            if( epoch==milestone2 ) network.setLearningRate(learningRate);
-            if( epoch==milestone3 ) network.setLearningRate(learningRate/2);
-*/
-            if( epoch<milestone1 && epoch%1000==0 ){
-                if(alternate) network.setLearningRate(learningRate);
-                if(!alternate) network.setLearningRate(learningRate*5);
-                alternate = !alternate;
-            }
-            if( epoch>milestone1 && epoch<milestone2 && epoch%500==0 ){
-                if(alternate) network.setLearningRate(learningRate);
-                if(!alternate) network.setLearningRate(learningRate*2);
-                alternate = !alternate;
-            }
-            if( epoch==milestone3 ) network.setLearningRate(learningRate);
-            if( epoch==milestone3 ) network.setLearningRate(learningRate/2);
-
-
-
-            if( epoch<milestone2 && epoch%250 == 0 ){
-                for( int s1 : Signal1 ) {
-                    network.train(x[s1], y[s1]);
-                }
-            }
-
-            int patternIndex = Signal0.get( (int) Math.floor(Math.random()*Signal0.size()) );
-            network.train(x[patternIndex], y[patternIndex]);
-
-            patternIndex = Signal1.get( (int) Math.floor(Math.random()*Signal1.size()) );
-            network.train(x[patternIndex], y[patternIndex]);
-
-            // Print error every 5000 epochs
-            if (epoch % 500 == 0) {
-                double totalError = 0;
-                int TT=0;
-                int FF=0;
-                int TF=0;
-                int FT=0;
-                for (int i = 0; i < x.length; i++) {
-                    double[] output = network.feedForward(x[i]);
-                    totalError += network.calculateMSE(output, y);
-                    boolean exp = output[0]>0.8;
-                    boolean act = y[i]>0.8;
-
-                    if( exp && act ) TT++;
-                    if( !exp && !act ) FF++;
-                    if( !exp && act ) FT++;
-                    if( exp && !act ) TF++;
-                }
-                double recall = (TT+TF)>0 ? TT*100.0/(TT+TF) : 0;
-                double precision = (TT+FT)>0 ? TT*100.0/(TT+FT) : 0;
-
-                int phase = epoch/500;
-                if( phase<entropy.length ) entropy[phase] = totalError;
-                String buf = String.format("%s>Epoch %d: Average MSE = %.6f, TT=%d, TF=%d, FT=%d, FF=%d, Precision=%.3f, Recall=%.3f\n",
-                        Utilities.getTime(), epoch, totalError, TT, TF, FT, FF, precision, recall);
-                sb.append( buf );
-                System.out.print(buf);
-            }//if
-
 
             //write predictions
             for (int i = 0; i < x.length; i++) {
@@ -220,15 +158,6 @@ public class TrainingProcessor extends TaskProcessor {
 
             Utilities.writeFile(outFile,sb);
 
-        }
-
     }
 
-    public void knockOutColumn(int knockOut, int width, int multiplier) {
-        for( int d=0; d<samples; d++ ){
-            for( int m=0; m<multiplier; m++ ){
-                inputVector[d][knockOut+m*width] = 0;
-            }
-        }
-    }
 }
