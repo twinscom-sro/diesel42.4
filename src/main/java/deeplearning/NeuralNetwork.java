@@ -79,7 +79,7 @@ public class NeuralNetwork {
     }
 
     public void train(DataSet ds, int iterations) {
-        network.setListeners(new ScoreIterationListener(1000));
+        network.setListeners(new ScoreIterationListener(500));
 
         // here the actual learning takes place
         IntStream.range(0, iterations).mapToObj(i -> ds).forEach(network::fit);

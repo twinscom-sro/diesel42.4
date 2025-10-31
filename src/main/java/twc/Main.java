@@ -21,12 +21,14 @@ public class Main {
     """;
 
     //debugging:
-    static final int ITERATIONS = 30000;
+    static final int ITERATIONS = 1000;
     static final int NEURONS = 4096; //"1024";
-    static final String KPIS = "e:/_db2/kpis/";
-    static final String TS = "e:/_db2/ts/";
-    static final String NETS = "e:/_db2/nets/";
-    static final String OUTS = "e:/_rand/2025-10-29/";
+    static final String KPIS = "c:/_db2/kpis/";
+    static final String TS = "c:/_db2/ts/";
+    static final String NETS = "c:/_db2/nets/";
+    static final String OUTS = "c:/_arcturus/2025-10-28/";
+    static final String VECTOR = "cmf,obv,willR,atrPct,kcMPct,kcUPct,macdv,macdvSignal";
+    static final String HISTORY = "3";
 
     static String[] dji30 = {"WMT","GS","MSFT","CAT","HD","UNH","V","SHW","AXP","JPM",
             "MCD","AMGN","IBM","TRV","AAPL","CRM","BA","AMZN","HON","JNJ","NVDA","MMM",
@@ -35,13 +37,6 @@ public class Main {
 
 
     public static void main(String[] args) {
-
-        System.out.println( System.getProperty("nd4j.cpu.backend.priority"));
-        System.out.println( System.getProperty("org.nd4j.log.initialization"));
-        System.setProperty("nd4j.gpu.backend.priority", "1");
-        System.setProperty("org.nd4j.log.initialization", "true");
-        System.out.println( System.getProperty("nd4j.gpu.backend.priority"));
-        System.out.println( System.getProperty("org.nd4j.log.initialization"));
 
         String task="3"; //args[0];
         StringBuilder sb = new StringBuilder();
