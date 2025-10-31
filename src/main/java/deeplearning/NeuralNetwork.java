@@ -84,13 +84,28 @@ public class NeuralNetwork {
         // here the actual learning takes place
         IntStream.range(0, iterations).mapToObj(i -> ds).forEach(network::fit);
 
-        //evaluate model training performance
+       /* //evaluate model training performance
         INDArray output = network.output(ds.getFeatures());
         Evaluation eval = new Evaluation();
         eval.eval(ds.getLabels(), output);
+        System.out.println(eval.stats());*/
+
+    }
+
+    public void evaluate(DataSet ds) {
+        evaluate(ds.getLabels(), ds.getFeatures());
+    }
+
+    public void evaluate(INDArray labels, INDArray features) {
+
+        //evaluate model training performance
+        INDArray output = network.output(features);
+        Evaluation eval = new Evaluation();
+        eval.eval(labels, output);
         System.out.println(eval.stats());
 
     }
+
 
     public void saveTopology(String fileName){
         try {

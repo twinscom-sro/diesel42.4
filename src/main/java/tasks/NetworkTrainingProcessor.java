@@ -21,6 +21,7 @@ public class NetworkTrainingProcessor extends TaskProcessor {
                 .prepareDataSet( ts.buySignal, ts.sellSignal, ts.tsVector )
                 .setLearningRate(0.02)
                 .train(iterations)
+                .evaluate()
                 .save( netFile );
 
 

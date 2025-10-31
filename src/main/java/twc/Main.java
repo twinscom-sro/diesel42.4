@@ -1,6 +1,7 @@
 package twc;
 
 import environment.Utilities;
+import tasks.ForecastProcessor;
 import tasks.NetworkTrainingProcessor;
 import tasks.TrainingSetProcessor;
 import tasks.VectorsProcessor;
@@ -38,7 +39,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String task="3"; //args[0];
+        String task="4"; //args[0];
         StringBuilder sb = new StringBuilder();
         String outFile = OUTS+"task_"+Utilities.getTimeTag()+".txt";
 
@@ -66,6 +67,17 @@ public class Main {
 
                 NetworkTrainingProcessor ntp = new NetworkTrainingProcessor(sb);
                 ntp.runTask(NEURONS, ITERATIONS, tsFile, netFile);
+            }
+
+        }else if( task.contentEquals("4") ) {
+            for( String tickerId : dji30 ){
+                String tsFile = TS+tickerId+"_209.txt";
+                String netFile = NETS+tickerId+"_209.txt";
+
+                ForecastProcessor fp = new ForecastProcessor(sb);
+                fp.runTask(netFile, tsFile, "2018-01-01","2023-12-31");
+                fp.runTask(netFile, tsFile, "2024-01-01","2025-12-31");
+                break;
             }
 
         }else{

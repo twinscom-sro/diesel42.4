@@ -21,6 +21,10 @@ public class DeepLayer {
         dataSet = null;
     }
 
+    public DeepLayer(String netFile) {
+        network = new NeuralNetwork( netFile );
+    }
+
     public DeepLayer prepareDataSet( double[] signal1, double[] signal2, double[][] inputs ){
 
         int size = inputs.length;
@@ -83,6 +87,11 @@ public class DeepLayer {
 
     public DeepLayer train(int iterations) {
         network.train(dataSet,iterations);
+        return this;
+    }
+
+    public DeepLayer evaluate() {
+        network.evaluate(dataSet);
         return this;
     }
 
