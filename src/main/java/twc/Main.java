@@ -1,6 +1,7 @@
 package twc;
 
 import environment.Utilities;
+import math.StatsCalc;
 import tasks.ForecastProcessor;
 import tasks.NetworkTrainingProcessor;
 import tasks.TrainingSetProcessor;
@@ -22,14 +23,14 @@ public class Main {
     """;
 
     //debugging:
-    static final int ITERATIONS = 1000;
-    static final int NEURONS = 4096; //"1024";
+    static final int ITERATIONS = 5000;
+    static final int NEURONS = 1024;//4096; //"1024";
     static final String KPIS = "c:/_db2/kpis/";
     static final String TS = "c:/_db2/ts/";
-    static final String NETS = "c:/_db2/nets2/";
-    static final String OUTS = "c:/_arcturus/2025-10-28/";
-    static final String VECTOR = "cmf,obv,willR,atrPct,kcMPct,kcUPct,macdv,macdvSignal";
-    static final String HISTORY = "3";
+    static final String NETS = "c:/_db2/nets3/";
+    static final String OUTS = "c:/_arcturus/2025-10-31b/";
+    //static final String VECTOR = "cmf,obv,willR,atrPct,kcMPct,kcUPct,macdv,macdvSignal";
+    //static final String HISTORY = "3";
 
     static String[] dji30 = {"WMT","GS","MSFT","CAT","HD","UNH","V","SHW","AXP","JPM",
             "MCD","AMGN","IBM","TRV","AAPL","CRM","BA","AMZN","HON","JNJ","NVDA","MMM",
@@ -39,7 +40,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String task="4"; //args[0];
+        String task="3"; //args[0];
         StringBuilder sb = new StringBuilder();
         String outFile = OUTS+"task_"+Utilities.getTimeTag()+".txt";
 
@@ -54,7 +55,7 @@ public class Main {
             for( String tickerId : dji30 ){
                 TrainingSetProcessor tsp = new TrainingSetProcessor(sb);
                 String kpiFile = KPIS+tickerId+"_kpi.txt";
-                String tsFile = TS+tickerId+"_209.txt";
+                String tsFile = TS+tickerId+"_94.txt";
                 tsp.runTask(tickerId,kpiFile,tsFile);
             }
            // TrainingProcessor tp = new TrainingProcessor(sb);
@@ -62,23 +63,45 @@ public class Main {
 
         }else if( task.contentEquals("3") ) {
             for( String tickerId : dji30 ){
-                String tsFile = TS+tickerId+"_209.txt";
-                String netFile = NETS+tickerId+"_209.txt";
+                String tsFile = TS+tickerId+"_94.txt";
+                String netFile = NETS+tickerId+"_94.txt";
 
                 NetworkTrainingProcessor ntp = new NetworkTrainingProcessor(sb);
                 ntp.runTask(NEURONS, ITERATIONS, tsFile, netFile);
             }
 
         }else if( task.contentEquals("4") ) {
-            for( String tickerId : /*dji30*/ new String[]{"WMT"} ){
+
+            StatsCalc s = new StatsCalc(4);
+
+            for( String tickerId : dji30 /*new String[]{"WMT"}*/ ){
                 String tsFile = TS+"MCD"+"_209.txt";
                 String netFile = NETS+tickerId+"_209.txt";
+                String pngFile = OUTS+tickerId+"_209f.png";
 
                 ForecastProcessor fp = new ForecastProcessor(sb);
-                fp.runTask("Training chart", netFile, tsFile, "2018-01-01","2023-12-31");
-                fp.runTask("Forecast Chart", netFile, tsFile, "2024-01-01","2025-12-31");
+                //fp.runTask(netFile, tsFile, "2018-01-01","2023-12-31");
+                fp.runTask(netFile, tsFile, "2024-01-01","2025-12-31");
+                fp.drawChart( "Forecast chart", fp.getForecast(), pngFile );
+                s.log( fp.getForecast().recall1, fp.getForecast().precision1, fp.getForecast().recall2, fp.getForecast().precision2 );
                 //break;
             }
+
+            s.printResults();
+
+        }else if( task.contentEquals("5") ) {
+
+            for( String tickerId : dji30 /*new String[]{"WMT"}*/ ) {
+
+                String tsFile = TS + tickerId + "_209.txt";
+                String netFile = NETS + tickerId + "_209.txt";
+
+                ForecastProcessor fp = new ForecastProcessor(sb);
+                //fp.runTask(netFile, tsFile, "2018-01-01","2023-12-31");
+                fp.runTaskWithKnockouts(netFile, tsFile, "2019-01-01", "2023-12-31");
+
+            }
+
 
         }else{
             System.out.println( MENU );
@@ -87,4 +110,5 @@ public class Main {
         Utilities.writeFile(outFile, sb );
 
     }
+
 }

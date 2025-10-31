@@ -2,16 +2,9 @@ package deeplearning;
 
 import datamodels.Forecast;
 import datamodels.TrainingSet;
-import org.deeplearning4j.optimize.listeners.ScoreIterationListener;
-import org.nd4j.evaluation.classification.Evaluation;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.DataSet;
 import org.nd4j.linalg.factory.Nd4j;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.stream.IntStream;
 
 public class DeepLayer {
 
@@ -116,15 +109,15 @@ public class DeepLayer {
         return this;
     }
 
-    public Forecast checkPrecision(String title, TrainingSet ts) {
+    public Forecast evaluateResults( TrainingSet ts, double[][] inputs ){
 
         int buy_tt=0, buy_tf=0, buy_ft=0, buy_ff=0;
         int sell_tt=0, sell_tf=0, sell_ft=0, sell_ff=0;
 
-        Forecast fcst = new Forecast(title, ts.tsVector.length);
+        Forecast fcst = new Forecast(inputs.length);
 
-        for( int d=0; d<ts.tsVector.length; d++){
-            double[] y = feedForward(ts.tsVector[d]);
+        for( int d=0; d<inputs.length; d++){
+            double[] y = feedForward(inputs[d]);
 
             fcst.orig1[d] = ts.buySignal[d];
             fcst.orig2[d] = ts.sellSignal[d];
@@ -149,8 +142,8 @@ public class DeepLayer {
         double sellRecall = (sell_tt+sell_tf)>0 ? sell_tt * 100.0 / (sell_tt+sell_tf) : 0;
         double sellPrecision = (sell_tt+sell_ft)>0 ? sell_tt * 100.0 / (sell_tt+sell_ft) : 0;
         //System.out.format("buy=[%d,%d,%d,%d], sell=[%d,%d,%d,%d]\n",buy_tt,buy_tf,buy_ft,buy_ff,sell_tt,sell_tf,sell_ft,sell_ff);
-        System.out.format("model='%s', bR=%.2f, bP=%.2f, sR=%.2f, sP=%.2f\n",
-                label, buyRecall, buyPrecision, sellRecall, sellPrecision );
+       /* System.out.format("model='%s', bR=%.2f, bP=%.2f, sR=%.2f, sP=%.2f\n",
+                label, buyRecall, buyPrecision, sellRecall, sellPrecision );*/
         fcst.recall1 = buyRecall;
         fcst.precision1 = buyPrecision;
         fcst.recall2 = sellRecall;

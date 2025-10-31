@@ -1,7 +1,6 @@
 package datamodels;
 
 public class Forecast {
-    public String title;
     public double recall1, precision1, recall2, precision2;
     public double[] orig1;
     public double[] act1;
@@ -10,8 +9,7 @@ public class Forecast {
     public double[] price;
     public String[] ref;
 
-    public Forecast(String _title, int length){
-        title = _title;
+    public Forecast(int length){
         orig1 = new double[length];
         act1 = new double[length];
         orig2 = new double[length];

@@ -14,14 +14,16 @@ public class TrainingSetProcessor extends TaskProcessor {
             "macd","macdSignal","atrPct","mfi","pvo","obv","willR",
             "kcLPct","kcMPct","kcUPct","macdv","macdvSignal","mPhase","mDir" };
 
+    static String[] KPI_VECTOR2 ={"mfi","pvo","obv","kcLPct","kcUPct","macdv","mPhase","mDir" };
+
     public JSON runTask(String tickerId, String kpiFile, String tsFile ) {
 //-----------------------------------------------------------------------------------------------------------------
         System.out.println("TrainingSetProcessor.runTask - STARTING");
 
         TrainingSet trainingSet = new TrainingSet();
 
-        trainingSet.loadData(kpiFile, KPI_VECTOR, 2006 );
-        trainingSet.prepareTrainingSet( 20,5);
+        trainingSet.loadData(kpiFile, KPI_VECTOR2, 2006 );
+        trainingSet.prepareTrainingSet( 10,10);
         trainingSet.save( tsFile );
 
         return (JSON.DATA(null));

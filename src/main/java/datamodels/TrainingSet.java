@@ -31,7 +31,7 @@ public class TrainingSet {
         length=0;
     }
 
-    public double[][] tsVector;
+    public double[][] tsTensor;
     public int tsSize;
 
     public TrainingSet(String tsFile, String fromDate, String toDate) {
@@ -60,7 +60,7 @@ public class TrainingSet {
         length = lines.size();
         tsSize = columns - 7;
         //System.out.format("readin TS file of size [%d x %d]\n", length, tsSize);
-        tsVector = new double[length][tsSize];
+        tsTensor = new double[length][tsSize];
         dates = new String[length];
         buySignal = new double[length];
         sellSignal = new double[length];
@@ -79,7 +79,7 @@ public class TrainingSet {
             priceOpen[d] = Double.parseDouble(fields[5]);
             priceClose[d] = Double.parseDouble(fields[6]);
             for( int k=0; k<tsSize; k++ ){
-                tsVector[d][k] = Double.parseDouble(fields[7+k]);
+                tsTensor[d][k] = Double.parseDouble(fields[7+k]);
             }
         }
    }
@@ -242,13 +242,19 @@ public void normalizeInputs(String kpi, double mu, double sigma) {
 
 
     public void prepareTrainingSet(int numDays, int history){
-        tsSize = lengthPriceSignature( numDays )                // 20*5 = 100
+     /*   tsSize = lengthPriceSignature( numDays )                // 20*5 = 100
                 + lengthVolumeSignature( numDays )              // 20
                 + lengthKpiSignature( history, kpiVectorSize )  // 5*17 = 85
                 + lengthCalendarSignature();                    // 4
-                                                                // total = 209
+                                                                // total = 209*/
 
-        tsVector = new double[length][tsSize];
+        tsSize = lengthVolumeSignature( numDays )              // 10
+                + lengthKpiSignature( history, kpiVectorSize )  // 10*8
+                + lengthCalendarSignature();                    // 4
+        // total = 94
+
+
+        tsTensor = new double[length][tsSize];
 
         for( int d=0; d<length; d++ ) {
 
@@ -257,7 +263,7 @@ public void normalizeInputs(String kpi, double mu, double sigma) {
             double[] kpiSignature = composeKpiSignature( d, history, kpiVectorSize);
             double[] calendarSignature = composeCalendarSignature( dates[d] );
 
-            tsVectorPut( tsVector[d], priceSignature, volumeSignature, kpiSignature, calendarSignature );
+            tsVectorPut( tsTensor[d], /*priceSignature*/null, volumeSignature, kpiSignature, calendarSignature );
 
         }
 
@@ -266,10 +272,10 @@ public void normalizeInputs(String kpi, double mu, double sigma) {
 
     private void tsVectorPut(double[] y, double[] a, double[] b, double[] c, double[] d) {
         int k=0;
-        for( int i=0; i<a.length; i++ ) y[k++] = a[i];
-        for( int i=0; i<b.length; i++ ) y[k++] = b[i];
-        for( int i=0; i<c.length; i++ ) y[k++] = c[i];
-        for( int i=0; i<d.length; i++ ) y[k++] = d[i];
+        if( a!=null ) for( int i=0; i<a.length; i++ ) y[k++] = a[i];
+        if( b!=null ) for( int i=0; i<b.length; i++ ) y[k++] = b[i];
+        if( c!=null ) for( int i=0; i<c.length; i++ ) y[k++] = c[i];
+        if( d!=null ) for( int i=0; i<d.length; i++ ) y[k++] = d[i];
     }
 
     private int lengthPriceSignature(int numDays) {
@@ -390,7 +396,7 @@ public void normalizeInputs(String kpi, double mu, double sigma) {
             out.append( String.format("%10s,%3.1f,%3.1f,%.2f,%.2f,%.2f,%.2f",
                     dates[d],buySignal[d],sellSignal[d],price[d],zigZag[d],priceOpen[d],priceClose[d]) );
             for( int j=0; j<tsSize; j++ ) {
-                out.append( String.format(",%.6f", tsVector[d][j] ) );
+                out.append( String.format(",%.6f", tsTensor[d][j] ) );
             }
             out.append( System.lineSeparator() );
         }

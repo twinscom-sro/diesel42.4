@@ -1,6 +1,5 @@
 package tasks;
 
-import datamodels.StockDataSet;
 import datamodels.TrainingSet;
 import deeplearning.DeepLayer;
 
@@ -18,7 +17,7 @@ public class NetworkTrainingProcessor extends TaskProcessor {
         int vectorSize = ts.tsSize;
 
         DeepLayer network = new DeepLayer( netFile, vectorSize, neurons )
-                .prepareDataSet( ts.buySignal, ts.sellSignal, ts.tsVector )
+                .prepareDataSet( ts.buySignal, ts.sellSignal, ts.tsTensor)
                 .setLearningRate(0.02)
                 .train(iterations)
                 .evaluate()
