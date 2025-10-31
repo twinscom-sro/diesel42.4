@@ -1,0 +1,168 @@
+Manifest-Version: 1.0
+Main-Class: twc.Main
+Class-Path: hdf5-1.12.0-1.5.3.jar netty-resolver-dns-4.1.48.Final.jar li
+ bfreenect-0.5.7-1.5.5-linux-ppc64le.jar nd4j-parameter-server-model-1.0
+ .0-beta7.jar artoolkitplus-2.3.1-1.5.3.jar libfreenect2-0.2.0-1.5.3.jar
+  libdc1394-2.2.6-1.5.5-windows-x86.jar artoolkitplus-2.3.1-1.5.5-linux-
+ ppc64le.jar opencv-4.3.0-1.5.3-windows-x86.jar javacpp-platform-1.5.3.j
+ ar leptonica-1.79.0-1.5.3-linux-arm64.jar leptonica-1.79.0-1.5.3-androi
+ d-x86.jar cytoscape-klay-3.1.2.jar openblas-0.3.13-1.5.5-linux-arm64.ja
+ r libfreenect2-0.2.0-1.5.5-linux-x86_64.jar logback-core-1.1.7.jar cyto
+ scape-spread-3.0.0.jar hdf5-1.12.0-1.5.3-linux-armhf.jar librealsense2-
+ 2.40.0-1.5.5-macosx-x86_64.jar netty-handler-proxy-4.1.48.Final.jar dee
+ plearning4j-zoo-1.0.0-beta7.jar nd4j-parameter-server-1.0.0-beta7.jar t
+ esseract-4.1.1-1.5.5-android-x86.jar jackson-1.0.0-beta7.jar openblas-0
+ .3.9-1.5.3.jar jackson-databind-2.7.9.jar commons-net-3.1.jar commons-i
+ o-2.5.jar openblas-0.3.13-1.5.5-android-arm.jar retinajs-0.0.2.jar java
+ cpp-1.5.3-linux-x86_64.jar httpclient-4.3.5.jar datavec-data-image-1.0.
+ 0-beta7.jar deeplearning4j-vertx-1.0.0-beta7.jar tesseract-platform-4.1
+ .1-1.5.5.jar coreui__icons-0.3.0.jar hdf5-1.12.0-1.5.3-linux-arm64.jar 
+ httpasyncclient-4.1.1.jar opencv-4.3.0-1.5.3-linux-x86.jar cytoscape-co
+ la-2.3.0.jar tesseract-4.1.1-1.5.5-macosx-x86_64.jar d3js-3.3.5.jar nd4
+ j-cuda-10.0-1.0.0-beta7.jar lodash-3.10.1-amd.jar ffmpeg-4.3.2-1.5.5-wi
+ ndows-x86_64.jar javacpp-1.5.3-linux-x86.jar libdc1394-2.2.6-1.5.3.jar 
+ masonry-3.1.5.jar eclipse-collections-api-7.1.2.jar netty-codec-socks-4
+ .1.48.Final.jar libdc1394-2.2.6-1.5.5-linux-x86.jar nd4j-api-1.0.0-beta
+ 7.jar librealsense-1.12.4-1.5.3.jar deeplearning4j-modelimport-1.0.0-be
+ ta7.jar opencv-4.3.0-1.5.3-macosx-x86_64.jar logback-classic-1.1.7.jar 
+ flandmark-platform-1.07-1.5.5.jar videoinput-platform-0.200-1.5.5.jar j
+ ackson-core-2.7.9.jar flandmark-1.07-1.5.5-linux-x86.jar libfreenect-0.
+ 5.7-1.5.5-linux-x86.jar jna-platform-4.3.0.jar artoolkitplus-2.3.1-1.5.
+ 5-android-x86.jar tesseract-4.1.1-1.5.3.jar tesseract-4.1.1-1.5.5-linux
+ -ppc64le.jar cuda-10.0-7.4-1.5-windows-x86_64.jar librealsense2-2.40.0-
+ 1.5.5-linux-x86_64.jar unirest-java-1.4.9.jar leptonica-1.79.0-1.5.3-li
+ nux-x86_64.jar flycapture-2.13.3.31-1.5.5-windows-x86_64.jar jcommon-1.
+ 0.23.jar openblas-0.3.13-1.5.5-windows-x86_64.jar flycapture-2.13.3.31-
+ 1.5.5-linux-armhf.jar leptonica-platform-1.79.0-1.5.3.jar openblas-0.3.
+ 13-1.5.5-ios-arm64.jar common-image-3.1.1.jar jquery.sparkline-2.1.2.ja
+ r babel__polyfill-7.4.4.jar artoolkitplus-2.3.1-1.5.5-windows-x86_64.ja
+ r jai-imageio-core-1.3.0.jar jcommander-1.27.jar deeplearning4j-ui-1.0.
+ 0-beta7.jar netty-resolver-4.1.48.Final.jar jcip-annotations-1.0.jar jq
+ uery-raty-2.5.2.jar libdc1394-2.2.6-1.5.5-linux-x86_64.jar flandmark-1.
+ 07-1.5.5-android-arm.jar flycapture-2.13.3.31-1.5.3.jar librealsense2-2
+ .40.0-1.5.5-linux-x86.jar libfreenect-0.5.7-1.5.5-linux-x86_64.jar libf
+ reenect-0.5.7-1.5.5-windows-x86_64.jar arrow-vector-0.11.0.jar libdc139
+ 4-2.2.6-1.5.5-linux-arm64.jar javacpp-1.5.3-android-x86.jar javacpp-1.5
+ .3-windows-x86.jar bootstrap-notify-3.1.3-1.jar ffmpeg-4.3.2-1.5.5-wind
+ ows-x86.jar freemarker-2.3.23.jar leptonica-1.79.0-1.5.3-linux-ppc64le.
+ jar artoolkitplus-2.3.1-1.5.5-android-arm.jar chosen-0.9.8.jar nd4j-aer
+ on-1.0.0-beta7.jar ffmpeg-4.3.2-1.5.5-android-arm64.jar imageio-metadat
+ a-3.1.1.jar httpcore-4.3.2.jar threadly-4.10.0.jar opencv-platform-4.3.
+ 0-1.5.3.jar arrow-format-0.11.0.jar webcola-3.4.0.jar tesseract-4.1.1-1
+ .5.5-linux-armhf.jar flandmark-1.07-1.5.5-linux-ppc64le.jar javacpp-1.5
+ .3-android-arm64.jar httpmime-4.5.2.jar opencv-4.3.0-1.5.3-linux-arm64.
+ jar javacpp-1.5.3-ios-arm64.jar leptonica-1.79.0-1.5.3-windows-x86_64.j
+ ar leptonica-1.79.0-1.5.3-windows-x86.jar flycapture-2.13.3.31-1.5.5-li
+ nux-x86.jar graphlib-1.0.7.jar protonpack-1.15.jar flycapture-2.13.3.31
+ -1.5.5-windows-x86.jar weaverjs-1.2.0.jar opencv-4.3.0-1.5.3-linux-ppc6
+ 4le.jar fastutil-6.5.7.jar cytoscape-3.3.3.jar commons-logging-1.1.3.ja
+ r libfreenect-0.5.7-1.5.5-linux-armhf.jar flandmark-1.07-1.5.5-macosx-x
+ 86_64.jar dagre-0.7.4.jar netty-transport-4.1.48.Final.jar librealsense
+ -1.12.4-1.5.5-macosx-x86_64.jar deeplearning4j-parallel-wrapper-1.0.0-b
+ eta7.jar artoolkitplus-2.3.1-1.5.5-linux-x86.jar eclipse-collections-fo
+ rkjoin-7.1.2.jar annotations-13.0.jar vertx-web-3.9.0.jar librealsense-
+ platform-1.12.4-1.5.5.jar opencv-4.3.0-1.5.3-linux-x86_64.jar joda-time
+ -2.2.jar openblas-0.3.13-1.5.5-linux-armhf.jar nd4j-parameter-server-cl
+ ient-1.0.0-beta7.jar netty-codec-4.1.48.Final.jar mapdb-3.0.5.jar libre
+ alsense2-2.40.0-1.5.5-linux-arm64.jar core-js-3.0.0-beta.9.jar ffmpeg-4
+ .3.2-1.5.5-linux-armhf.jar librealsense2-2.29.0-1.5.3.jar regenerator-r
+ untime-0.13.11.jar tesseract-4.1.1-1.5.5-linux-x86_64.jar dagre-0.8.4.j
+ ar flot-0.8.3.jar bootstrap-4.3.1.jar jakarta.activation-api-1.2.1.jar 
+ libdc1394-2.2.6-1.5.5-linux-armhf.jar javacv-platform-1.5.5.jar ffmpeg-
+ 4.3.2-1.5.5-android-x86_64.jar libdc1394-platform-2.2.6-1.5.5.jar boots
+ trap-2.2.2-1.jar deeplearning4j-ui-model-1.0.0-beta7.jar opencv-4.3.0-1
+ .5.3-windows-x86_64.jar deeplearning4j-nlp-1.0.0-beta7.jar librealsense
+ -1.12.4-1.5.5-windows-x86_64.jar artoolkitplus-2.3.1-1.5.5-android-x86_
+ 64.jar leptonica-1.79.0-1.5.3-android-arm.jar nearestneighbor-core-1.0.
+ 0-beta7.jar font-awesome-3.0.2.jar opencv-4.3.0-1.5.3-android-x86_64.ja
+ r librealsense-1.12.4-1.5.5-linux-armhf.jar datavec-arrow-1.0.0-beta7.j
+ ar json-20160212.jar commons-codec-1.10.jar libfreenect-0.5.7-1.5.5-win
+ dows-x86.jar t-digest-3.2.jar librealsense-1.12.4-1.5.5-linux-x86_64.ja
+ r jquery-ui-touch-punch-0.2.2.jar d3-shape-2.0.0-rc.1.jar openblas-0.3.
+ 13-1.5.5-linux-x86_64.jar flandmark-1.07-1.5.5-android-arm64.jar lepton
+ ica-1.79.0-1.5.3-android-x86_64.jar d3-timer-2.0.0-rc.1.jar jsr305-3.0.
+ 2.jar openblas-0.3.13-1.5.5-macosx-x86_64.jar javacpp-1.5.3-macosx-x86_
+ 64.jar libfreenect-0.5.7-1.5.5-macosx-x86_64.jar libfreenect2-platform-
+ 0.2.0-1.5.5.jar arrow-memory-0.11.0.jar d3-drag-2.0.0-rc.1.jar nd4j-nat
+ ive-api-1.0.0-beta7.jar jquery-ui-1.10.2.jar ffmpeg-4.3.2-1.5.5-linux-p
+ pc64le.jar openblas-0.3.13-1.5.5-android-x86_64.jar opencv-4.3.0-1.5.3-
+ ios-x86_64.jar ffmpeg-4.3.2-1.5.5-linux-arm64.jar artoolkitplus-2.3.1-1
+ .5.5-windows-x86.jar librealsense-1.12.4-1.5.5-windows-x86.jar flandmar
+ k-1.07-1.5.5-windows-x86_64.jar netty-codec-dns-4.1.48.Final.jar vertx-
+ auth-common-3.9.0.jar flandmark-1.07-1.5.5-android-x86_64.jar tesseract
+ -4.1.1-1.5.5-android-arm.jar leptonica-1.79.0-1.5.3-android-arm64.jar h
+ df5-1.12.0-1.5.3-windows-x86_64.jar deeplearning4j-ui-components-1.0.0-
+ beta7.jar hdf5-1.12.0-1.5.3-windows-x86.jar videoinput-0.200-1.5.5-wind
+ ows-x86.jar javacpp-1.5.3.jar ffmpeg-4.2.2-1.5.3.jar bson-5.6.1.jar com
+ mons-math3-3.5.jar common-io-3.1.1.jar leptonica-1.79.0-1.5.3-macosx-x8
+ 6_64.jar libfreenect2-0.2.0-1.5.5-macosx-x86_64.jar cuda-10.0-7.4-1.5.j
+ ar datavec-local-1.0.0-beta7.jar jquery-cookie-1.4.1-1.jar tesseract-4.
+ 1.1-1.5.5-linux-arm64.jar javacpp-1.5.3-ios-x86_64.jar openblas-0.3.13-
+ 1.5.5-ios-x86_64.jar cytoscape-cose-bilkent-4.0.0.jar slf4j-api-1.7.21.
+ jar stream-2.9.8.jar javacpp-1.5.3-android-x86_64.jar coreui__coreui-2.
+ 1.9.jar bootstrap-glyphicons-bdd2cbfba0.jar kotlin-stdlib-1.4.20.jar gs
+ on-2.8.0.jar jquery-migrate-1.2.1.jar artoolkitplus-2.3.1-1.5.5-linux-a
+ rmhf.jar openblas-0.3.13-1.5.5-android-x86.jar protobuf-1.0.0-beta7.jar
+  flycapture-platform-2.13.3.31-1.5.5.jar jcommon-1.0.16.jar lodash.debo
+ unce-4.0.8.jar hdf5-1.12.0-1.5.3-macosx-x86_64.jar artoolkitplus-2.3.1-
+ 1.5.5-macosx-x86_64.jar imageio-jpeg-3.1.1.jar nd4j-cuda-10.0-1.0.0-bet
+ a7-windows-x86_64.jar cytoscape-euler-1.2.1.jar artoolkitplus-platform-
+ 2.3.1-1.5.5.jar flatbuffers-1.9.0.jar artoolkitplus-2.3.1-1.5.5-linux-x
+ 86_64.jar opencv-4.3.0-1.5.3-linux-armhf.jar netty-common-4.1.22.Final.
+ jar openblas-0.3.13-1.5.5-windows-x86.jar leptonica-1.79.0-1.5.3-linux-
+ x86.jar heap-0.2.7.jar libfreenect-0.5.7-1.5.5-linux-arm64.jar libreals
+ ense2-platform-2.40.0-1.5.5.jar videoinput-0.200-1.5.3.jar nd4j-common-
+ 1.0.0-beta7.jar ffmpeg-4.3.2-1.5.5-linux-x86_64.jar javacv-1.5.3.jar im
+ ageio-tiff-3.1.1.jar explorercanvas-r3-1.jar opencv-4.3.0-1.5.3-android
+ -arm64.jar guava-19.0.jar open-sans-0.1.3.jar vertx-core-3.9.0.jar libr
+ ealsense2-2.40.0-1.5.5-windows-x86.jar jquery-2.2.0.jar aeron-all-1.4.0
+ .jar imagesloaded-2.1.1.jar elsa-3.0.0-M5.jar opencv-4.3.0-1.5.3.jar hd
+ f5-1.12.0-1.5.3-linux-x86.jar deeplearning4j-common-1.0.0-beta7.jar hdf
+ 5-1.12.0-1.5.3-linux-x86_64.jar javax.json-1.0.4.jar excanvas-3.jar jna
+ -4.3.0.jar httpcore-nio-4.4.4.jar Agrona-0.5.4.jar d3-dispatch-2.0.0-rc
+ .1.jar common-lang-3.1.1.jar libdc1394-2.2.6-1.5.5-linux-ppc64le.jar da
+ tatables-1.9.4.jar videoinput-0.200-1.5.5-windows-x86_64.jar hdf5-platf
+ orm-1.12.0-1.5.3.jar cytoscape-3.2.5.jar uniform-2.1.2-1.jar tesseract-
+ 4.1.1-1.5.5-windows-x86.jar threetenbp-1.3.3.jar ffmpeg-4.3.2-1.5.5-and
+ roid-x86.jar ffmpeg-4.3.2-1.5.5-macosx-x86_64.jar tesseract-4.1.1-1.5.5
+ -windows-x86_64.jar artoolkitplus-2.3.1-1.5.5-android-arm64.jar opencsv
+ -2.3.jar datavec-api-1.0.0-beta7.jar graphlib-2.1.8.jar leptonica-1.79.
+ 0-1.5.3.jar commons-compress-1.18.jar netty-handler-4.1.48.Final.jar os
+ wego-concurrent-1.3.4.jar tesseract-4.1.1-1.5.5-android-x86_64.jar flan
+ dmark-1.07-1.5.5-linux-armhf.jar javacpp-1.5.3-windows-x86_64.jar flyca
+ pture-2.13.3.31-1.5.5-linux-arm64.jar deeplearning4j-nn-1.0.0-beta7.jar
+  klayjs-0.4.1.jar guava-1.0.0-beta7.jar vertx-web-common-3.9.0.jar d3-s
+ election-3.0.0.jar hppc-0.7.2.jar netty-codec-http-4.1.48.Final.jar fla
+ ndmark-1.07-1.5.5-linux-arm64.jar jfreechart-1.0.13.jar byteunits-0.9.1
+ .jar openblas-0.3.13-1.5.5-android-arm64.jar jakarta.xml.bind-api-2.3.2
+ .jar javacpp-1.5.3-linux-ppc64le.jar deeplearning4j-datavec-iterators-1
+ .0.0-beta7.jar imageio-bmp-3.1.1.jar artoolkitplus-2.3.1-1.5.5-linux-ar
+ m64.jar jquery-3.4.1.jar github-com-jboesch-Gritter-1.7.4.jar kotlin-st
+ dlib-common-1.4.20.jar openblas-0.3.13-1.5.5-linux-x86.jar deeplearning
+ 4j-datasets-1.0.0-beta7.jar deeplearning4j-core-1.0.0-beta7.jar popper.
+ js-1.12.9.jar hdf5-1.12.0-1.5.3-linux-ppc64le.jar deeplearning4j-utilit
+ y-iterators-1.0.0-beta7.jar flatbuffers-java-1.10.0.jar openblas-0.3.13
+ -1.5.5-linux-ppc64le.jar modernizr-2.8.3-1.jar libfreenect-platform-0.5
+ .7-1.5.5.jar libfreenect2-0.2.0-1.5.5-linux-x86.jar librealsense2-2.40.
+ 0-1.5.5-linux-armhf.jar d3-path-3.1.0.jar netty-buffer-4.1.22.Final.jar
+  librealsense-1.12.4-1.5.5-linux-x86.jar tesseract-4.1.1-1.5.5-android-
+ arm64.jar oshi-json-3.4.2.jar fullcalendar-1.6.4.jar commons-lang3-3.6.
+ jar flandmark-1.07-1.5.5-linux-x86_64.jar javacpp-1.5.3-android-arm.jar
+  eclipse-collections-7.1.2.jar opencv-4.3.0-1.5.3-android-arm.jar cytos
+ cape-dagre-2.1.0.jar jackson-annotations-2.7.9.jar libfreenect-0.5.7-1.
+ 5.3.jar libdc1394-2.2.6-1.5.5-macosx-x86_64.jar javacpp-1.5.3-linux-arm
+ 64.jar opencv-4.3.0-1.5.3-ios-arm64.jar ffmpeg-platform-4.3.2-1.5.5.jar
+  opencv-4.3.0-1.5.3-android-x86.jar openblas-platform-0.3.13-1.5.5.jar 
+ flandmark-1.07-1.5.3.jar imageio-core-3.1.1.jar lodash-4.17.21.jar jque
+ ry-knob-1.2.2.jar librealsense2-2.40.0-1.5.5-windows-x86_64.jar lz4-1.3
+ .0.jar libfreenect2-0.2.0-1.5.5-windows-x86_64.jar deeplearning4j-tsne-
+ 1.0.0-beta7.jar vertx-bridge-common-3.9.0.jar flycapture-2.13.3.31-1.5.
+ 5-linux-x86_64.jar tesseract-4.1.1-1.5.5-linux-x86.jar libdc1394-2.2.6-
+ 1.5.5-windows-x86_64.jar imageio-psd-3.1.1.jar sqlite-jdbc-3.15.1.jar n
+ etty-codec-http2-4.1.48.Final.jar oshi-core-3.4.2.jar noty-2.2.2.jar co
+ mmons-lang-2.6.jar flandmark-1.07-1.5.5-windows-x86.jar neoitertools-1.
+ 0.0.jar ffmpeg-4.3.2-1.5.5-linux-x86.jar flandmark-1.07-1.5.5-android-x
+ 86.jar jfasttext-0.4.jar ffmpeg-4.3.2-1.5.5-android-arm.jar librealsens
+ e-1.12.4-1.5.5-linux-arm64.jar leptonica-1.79.0-1.5.3-linux-armhf.jar j
+ avacpp-1.5.3-linux-armhf.jar
+

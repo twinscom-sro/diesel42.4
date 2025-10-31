@@ -28,6 +28,7 @@ public class NeuralNetwork {
 
     public NeuralNetwork(String fileName) {
         try {
+            System.out.println("Loading Neural Network from " + fileName);
             network = MultiLayerNetwork.load(new File(fileName), true);
         } catch (IOException e) {
             throw new RuntimeException(e);
