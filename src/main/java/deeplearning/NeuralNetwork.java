@@ -28,7 +28,7 @@ public class NeuralNetwork {
 
     public NeuralNetwork(String fileName) {
         try {
-            System.out.println("Loading Neural Network from " + fileName);
+            //System.out.println("Loading Neural Network from " + fileName);
             network = MultiLayerNetwork.load(new File(fileName), true);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -73,10 +73,9 @@ public class NeuralNetwork {
     }
 
 
-    public double[] feedForward(INDArray features) {
+    public INDArray feedForward(INDArray features) {
         INDArray y = network.output(features);
-        double[] y1 = y.data().asDouble();
-        return y1;
+        return y;
     }
 
     public void train(DataSet ds, int iterations) {
@@ -104,6 +103,9 @@ public class NeuralNetwork {
         Evaluation eval = new Evaluation();
         eval.eval(labels, output);
         System.out.println(eval.stats());
+        /*System.out.format("br=%.2f, bp=%.2f, sr=%.2f, sp=%.2f\n",
+                eval.recall(1),eval.precision(1),
+                eval.recall(2),eval.precision(2));*/
 
     }
 

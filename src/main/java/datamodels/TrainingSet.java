@@ -59,7 +59,7 @@ public class TrainingSet {
 
         length = lines.size();
         tsSize = columns - 7;
-        System.out.format("readin TS file of size [%d x %d]\n", length, tsSize);
+        //System.out.format("readin TS file of size [%d x %d]\n", length, tsSize);
         tsVector = new double[length][tsSize];
         dates = new String[length];
         buySignal = new double[length];

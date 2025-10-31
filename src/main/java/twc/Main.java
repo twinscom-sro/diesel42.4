@@ -26,7 +26,7 @@ public class Main {
     static final int NEURONS = 4096; //"1024";
     static final String KPIS = "c:/_db2/kpis/";
     static final String TS = "c:/_db2/ts/";
-    static final String NETS = "c:/_db2/nets/";
+    static final String NETS = "c:/_db2/nets2/";
     static final String OUTS = "c:/_arcturus/2025-10-28/";
     static final String VECTOR = "cmf,obv,willR,atrPct,kcMPct,kcUPct,macdv,macdvSignal";
     static final String HISTORY = "3";
@@ -70,14 +70,14 @@ public class Main {
             }
 
         }else if( task.contentEquals("4") ) {
-            for( String tickerId : dji30 ){
-                String tsFile = TS+tickerId+"_209.txt";
+            for( String tickerId : /*dji30*/ new String[]{"WMT"} ){
+                String tsFile = TS+"MCD"+"_209.txt";
                 String netFile = NETS+tickerId+"_209.txt";
 
                 ForecastProcessor fp = new ForecastProcessor(sb);
-                fp.runTask(netFile, tsFile, "2018-01-01","2023-12-31");
-                fp.runTask(netFile, tsFile, "2024-01-01","2025-12-31");
-                break;
+                fp.runTask("Training chart", netFile, tsFile, "2018-01-01","2023-12-31");
+                fp.runTask("Forecast Chart", netFile, tsFile, "2024-01-01","2025-12-31");
+                //break;
             }
 
         }else{

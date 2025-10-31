@@ -17,7 +17,7 @@ public class NetworkTrainingProcessor extends TaskProcessor {
         TrainingSet ts = new TrainingSet(tsFile,"2018-01-01","2023-12-31");
         int vectorSize = ts.tsSize;
 
-        DeepLayer network = new DeepLayer( vectorSize, neurons )
+        DeepLayer network = new DeepLayer( netFile, vectorSize, neurons )
                 .prepareDataSet( ts.buySignal, ts.sellSignal, ts.tsVector )
                 .setLearningRate(0.02)
                 .train(iterations)
